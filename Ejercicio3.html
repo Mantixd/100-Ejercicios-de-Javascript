@@ -1,0 +1,34 @@
+<!-- 
+    CREAR DINAMICAMENTE OPTIONS PARA UN DROPDOWN 
+    USANDO UN ARREGLO DE OBJETOS EN JAVASCRIPT
+-->
+<select id="usuarioDD">
+    <option value="-1">Selecciona un usuario</option>
+</select>
+
+<script>
+    var arrayUsuarios = [
+        {
+            id: 1,
+            nombre: "Ricardo"
+        },
+        {
+            id: 2,
+            nombre: "Ernesto"
+        },
+        {
+            id: 3,
+            nombre: "Carlos"
+        }
+    ];
+
+    let usuarioDD = document.querySelector("#usuarioDD");
+
+    arrayUsuarios.forEach(function(usuario){
+        let optionUsuario = document.createElement("option");
+        optionUsuario.value = usuario.id;
+        optionUsuario.innerText = usuario.nombre;
+
+        usuarioDD.append(optionUsuario);
+    })
+</script>

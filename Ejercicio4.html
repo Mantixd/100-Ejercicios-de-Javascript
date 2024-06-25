@@ -1,0 +1,64 @@
+<!-- 
+    CREAR DINAMICAMENTE FILAS EN UNA TABLA, USANDO
+    UN ARREGLO DE OBJETOS.
+-->
+<body>
+    <table id="tablaUsuarios">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>      
+        </tbody>
+    </table>
+</body>
+
+<script>
+    var arrayUsuarios = [
+        {
+            id: 1,
+            nombre: "Ricardo",
+            edad: 18,
+            email: "ricardo@test.com"
+        },
+        {
+            id: 2,
+            nombre: "Ernesto",
+            edad: 23,
+            email: "ernesto@test.com"
+        },
+        {
+            id: 3,
+            nombre: "Carlos",
+            edad: 30,
+            email: "carlos@test.com"
+        }
+    ];
+
+    var tbodyUsuarios = document.querySelector("#tablaUsuarios tbody");
+
+    arrayUsuarios.forEach(function(usuario){
+        let fila = document.createElement("tr");
+
+        let columnaId = document.createElement("td");
+        let columnaNombre = document.createElement("td");
+        let columnaEdad = document.createElement("td");
+        let columnaEmail = document.createElement("td");
+
+        columnaId.innerText = usuario.id;
+        columnaNombre.innerText = usuario.nombre;
+        columnaEdad.innerText = usuario.edad;
+        columnaEmail.innerText = usuario.email;
+
+        fila.append(columnaId);
+        fila.append(columnaNombre);
+        fila.append(columnaEdad);
+        fila.append(columnaEmail);
+
+        tbodyUsuarios.append(fila);
+    });
+</script>
