@@ -1,16 +1,26 @@
 <!-- 
-   METODO Split() USANDO EXPRESIONES REGULARES
+   ELIMINAR ELEMENTO SELECCIONADO DE UNA LISTA
+   UTILIZANDO JAVASCRIPT
 -->
 <body>
-    <textarea id="txt_container" style="width: 300px;height: 100px;"></textarea>
-    <div id="txt_output"></div>
-    <button>Extraer Texto</button>
+    <selec id="usuariosDD">
+        <option value="-1">Selecciona un usuario</option>
+        <option value="1">Ricardo</option>
+        <option value="2">Ernesto</option>
+        <option value="3">Carlos</option>
+        <option value="4">Juan</option>
+        <option value="5">Carolyna</option>
+    </selec>
 </body>
 <script>
-    function getText(){
-        let delimiter = /[\r\n\t ,|]+/g;
-        let txt_container = document.querySelector("txt_container").value;
-        let formatted_value = txt_container.split(delimiter);
-        document.querySelector("#txt_output").innerText = formatted_value.join(",");
+    function eliminarUsuario(){
+        let usuariosDD = document.querySelector("#usuariosDD").value;
+        if(usuariosDD.value == "-1") {
+            alert("Por favor seleccione un usuario");
+        } else {
+            let optionSeleccionada = usuariosDD.options[usuariosDD.selectedIndex].innerText;
+            alert("Usuario" + optionSeleccionada + "eliminado correctamente");
+            usuariosDD.remove(usuariosDD.selectedIndex);
+        }
     }
 </script>
