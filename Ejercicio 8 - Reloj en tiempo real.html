@@ -1,0 +1,22 @@
+<!--
+    IMPRIMIR RELOJ QUE SE ACTUALIZA
+    EN TIEMPO REAL
+-->
+
+<body>
+    <div id="reloj"></div>
+</body>
+
+<script>
+var d = document;
+
+function mostrarReloj(){
+    let fecha = new Date();
+    let hora = fecha.toLocaleTimeString();
+    let reloj = d.querySelector("#reloj");
+    reloj.innerText = hora;
+    setTimeout(mostrarReloj, 1000);
+}
+
+mostrarReloj();
+</script>
