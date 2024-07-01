@@ -1,4 +1,6 @@
-/* JUEGO ADIVINAR LA PALABRA */
+/* JUEGO ADIVINAR LA PALABRA 
+   EN JAVASCRIPT 
+*/
 const prompt=require("prompt-sync")(); 
 
 class Juego {
@@ -13,52 +15,52 @@ class Juego {
         return this.iniciarJuego();
     }
 
-    iniciarJuego() {
+    iniciarJuego() {       
         console.log(this.lineas.join(" "));
         if(this.cntLetrasEncontradas == this.palabraCount) {
             return this.youWin();
         } else {
             if(this.vidas > 0) {
-                const letra = prompt("Escribe una letra: ");
+                const letra = prompt("Escribe una letra a buscar: ");
                 this.buscarLetra(letra);
             } else {
                 return this.gameOver();
             }
-        }       
+        }
     }
 
     buscarLetra(letra) {
         if(letra == "") {
             console.log("El valor no puede ser vacio");
         } else if(letra.length > 1) {
-            console.log("El valor debe ser solo una letra");
+            console.log("El valor debe de ser solo una letra");
         } else if(this.lineas.indexOf(letra) > -1) {
-            console.log("Esta letra ya fue encontrada");
+            console.log("Esta letra ya fue encontrada anteriormente");
         } else {
             const palabraSplit = this.palabraRandom.split("");
             let letrasEncontradas = 0;
             palabraSplit.forEach((letraPalabra, index) => {
                 if(letra.toLowerCase() == letraPalabra) {
-                    this.pintarLetras(letra, index);
+                    this.pintarLetra(letra, index);
                     letrasEncontradas++;
                 }
             });
 
             if(letrasEncontradas == 0) {
-                this.restarVida();             
-            }          
-        }     
+                this.restarVida();
+            }
+        }
         return this.iniciarJuego();
     }
 
-    pintarLetras(letra, posicion) {
+    pintarLetra(letra, posicion) {
         this.lineas[posicion] = letra.toLowerCase();
-        this.cntLetrasEncontradas += 1;               
+        this.cntLetrasEncontradas++;
     }
 
     restarVida() {
-        this.vidas = this.vidas - 1;
-        console.log("Palabra no encontrada, te quedan " + this.vidas + " vidas");
+        this.vidas -= 1;
+        console.log("Letra no encontrada, te quedan " + this.vidas + " vidas");
     }
 
     gameOver() {
@@ -66,7 +68,7 @@ class Juego {
     }
 
     youWin() {
-        console.log("Palabra "+ this.palabraRandom +" encontrada, has ganado!");
+        console.log("Palabra " + this.palabraRandom + " encontrada, has ganado!");
     }
 }
 
